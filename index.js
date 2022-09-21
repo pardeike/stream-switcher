@@ -67,6 +67,6 @@ app.post('/', (req, res) => {
   res.status(202).send()
 })
 
-app.listen(port, () => {
+app.listen(configuration.port, () => {
   console.log(`Example app listening on port ${configuration.port}`)
 })
