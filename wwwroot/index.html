@@ -1,0 +1,60 @@
+<html lang="de">
+
+<head>
+  <style>
+    html,
+    body,
+    * {
+      padding: 0;
+      margin: 0;
+    }
+
+    button {
+      border: 0;
+      padding: 10 20 10 20;
+      font-size: 1.1em;
+      font-weight: bolder;
+    }
+
+    button:hover {
+      background-color: gray;
+      cursor: pointer;
+    }
+
+    .active {
+      color: white;
+      background-color: blue;
+    }
+
+    .inactive {
+      color: black;
+      background-color: lightgray;
+    }
+  </style>
+</head>
+<script>
+  async function switchChannel(client) {
+    await fetch(`/?client=${client}`, { method: 'post' })
+    await updateCurrentChannel()
+  }
+  async function updateCurrentChannel() {
+    const req = await fetch(`/current`)
+    const res = await req.json()
+    if (res.client) {
+      const active = document.getElementById(`client${res.client}`)
+      const inactive = document.getElementById(`client${res.client == 'A' ? 'B' : 'A'}`)
+      active.classList.value = 'active'
+      inactive.classList.value = 'inactive'
+    }
+  }
+</script>
+
+<body>
+  <button id="clientA" onClick="switchChannel('A')">A</button>
+  <button id="clientB" onClick="switchChannel('B')">B</button>
+  <script>
+    updateCurrentChannel()
+  </script>
+</body>
+
+</html>

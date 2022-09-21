@@ -1,0 +1,12 @@
+{
+  "name": "stream-switcher",
+  "version": "1.0.0",
+  "description": "Switches between two rtmp stream in a semi elegant way",
+  "main": "index.js",
+  "author": "",
+  "license": "MIT",
+  "dependencies": {
+    "express": "^4.18.1",
+    "express-basic-auth": "^1.2.1"
+  }
+}
